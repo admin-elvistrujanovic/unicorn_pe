@@ -11,13 +11,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up MSVC 2019 tools
+      - name: Set up MSVC tools
         uses: ilammy/msvc-dev-cmd@v1  # Import MSVC++ tools for Visual Studio 2019
 
       - name: Compile project
         run: |
           cd unicorn_pe  # Navigate to the project directory
-          msbuild /p:Configuration=Release /p:Platform=x64  # Compile the project
+          "C:\Program Files\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" /p:Configuration=Release /p:Platform=x64  # Compile the project
 
       - name: Publish artifact
         uses: actions/upload-artifact@v2
