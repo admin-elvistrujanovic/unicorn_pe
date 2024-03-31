@@ -1,9 +1,7 @@
 name: Build and Publish
 
 on:
-  push:
-    branches:
-      - main  # Adjust this to the branch you want to trigger the workflow on
+  workflow_dispatch:  # Manually trigger the workflow
 
 jobs:
   build:
