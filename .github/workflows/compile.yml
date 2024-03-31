@@ -5,14 +5,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Use Windows runner for Visual Studio
+    runs-on: windows-latest  # Use Windows runner for Visual Studio 2019
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up MSVC tools
-        uses: ilammy/msvc-dev-cmd@v1  # Import MSVC++ tools
+      - name: Set up MSVC 2019 tools
+        uses: ilammy/msvc-dev-cmd@v1  # Import MSVC++ tools for Visual Studio 2019
 
       - name: Compile project
         run: |
