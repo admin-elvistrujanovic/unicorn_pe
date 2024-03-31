@@ -1,0 +1,28 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger the workflow on
+
+jobs:
+  build:
+    runs-on: windows-latest  # Use Windows runner for Visual Studio
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up MSVC tools
+        uses: ilammy/msvc-dev-cmd@v1  # Import MSVC++ tools
+
+      - name: Compile project
+        run: |
+          cd unicorn_pe  # Navigate to the project directory
+          msbuild /p:Configuration=Release /p:Platform=x64  # Compile the project
+
+      - name: Publish artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-builds
+          path: unicorn_pe/bin/x64/Release  # Adjust the path to your compiled binaries
